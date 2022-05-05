@@ -16,6 +16,19 @@ function computerPlay(option) {
     option = options[Math.floor(Math.random() * options.length)];
     return option;
 }
+
+//function that generates 5 playRounds, keeping score, and reports 
+//a winner/loser at the end 
+function game() {
+    for (let i = 0; i < 5; i++) {
+        if (i < 5) {
+            playRound(playerSelection, computerSelection);
+            console.log(playRound(playerSelection, computerSelection)); 
+            computerSelection;
+            console.log(computerSelection);
+            playerSelection = prompt('Type Rock, Paper, or Scissors.').toLowerCase();;   
+        } else console.log('You\'ve played 5 times.');      
+}}
 //function that plays a single round of RPS, using playerSelection
 //and computerSelection, returning a string that declares the winner
 function playRound(playerSelection, computerSelection) {
@@ -24,23 +37,18 @@ function playRound(playerSelection, computerSelection) {
     } else if (playerSelection == 'rock' && computerSelection == 'scissors') {
         return youWin;
     } else if (playerSelection == 'paper' && computerSelection == 'rock') {
-        return youWin;
+         return youWin;
     } else if (playerSelection == 'rock' && computerSelection == 'paper') {
-        return youLose;
+         return youLose;
     } else if (playerSelection == 'scissors' && computerSelection == 'rock') {
-        return youLose;
+         return youLose;
     } else if (playerSelection == 'paper' && computerSelection == 'scissors') {
-        return youLose;
-    } else if (playerSelection == computerSelection) {
+         return youLose;
+     } else if (playerSelection == computerSelection) {
         return 'It\'s a tie.';
-    }
+    } 
 }
-    
-
 
 console.log(computerSelection);
 console.log(playerSelection);
-console.log(playRound(playerSelection, computerSelection));
-
-//function that generates 5 playRounds, keeping score, and reports 
-//a winner/loser at the end 
+game();
