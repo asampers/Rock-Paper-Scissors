@@ -22,13 +22,18 @@ let playerScore = 0;
 //variables to store game outcome
 const computerWin = 'Sorry, you\'ve lost. Play again if you\'re not too embarrassed.'
 const playerWin = 'Congratulations! You\'ve won!';
+const tiedGame = 'It\'s a tied game. There are no winners or losers.';
 
-//function to figure out who wins?
-    //if computerscore == 2 && playerscore == 3 {
-   //     return playerWin;
- //   } else if computerscore == 3 && playerscore == 2 {
-  //      return computerWin;
- //}
+//function to figure out who wins
+function gameWin(computerScore, playerScore) {
+    if (computerScore < playerScore)  {
+        return playerWin;
+   } else if (computerScore > playerScore)  {
+        return computerWin;
+   } else if (computerScore == playerScore) {
+       return tiedGame;
+   }   
+}
 
 //function that plays a single round of RPS, using playerSelection
 //and computerSelection, returning a string that declares the winner
@@ -56,10 +61,8 @@ function playRound(playerSelection, computerSelection) {
          playerScore++;   
          return 'It\'s a tie.';
     } 
-
+    console.log('Computer has ' + computerScore + ' points. And player has ' + playerScore + ' points.');
 } 
-  
-
 
 //function that generates 5 playRounds, keeping score, and reports 
 //a winner/loser at the end 
@@ -69,7 +72,7 @@ function game() {
             console.log('Starting game number ' + (i) + '') ;
             console.log(playRound(playerSelection, computerPlay()));
             playerSelection = prompt('Type Rock, Paper, or Scissors.').toLowerCase();
-        } else console.log('You\'ve played 5 times.');      
+        }    
 }}
 
 game();
