@@ -17,6 +17,13 @@ function computerPlay(option) {
     return option;
 }
 
+//variables to store computerScore, playerScore
+let computerScore = 0;
+let playerScore = 0;
+
+//variables to store game outcome
+const computerWin = 'Sorry, you\'ve lost. Play again if you\'re not too embarrassed.'
+const playerWin = 'Congratulations! You\'ve won!';
 
 //function that plays a single round of RPS, using playerSelection
 //and computerSelection, returning a string that declares the winner
@@ -49,8 +56,4 @@ function game() {
         } else console.log('You\'ve played 5 times.');      
 }}
 
-
-
-console.log(playerSelection);
-console.log(computerSelection);
 game();
