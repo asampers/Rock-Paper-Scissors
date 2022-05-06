@@ -1,29 +1,23 @@
-//variable to store player's selection
-let playerSelection = playerChoice();
-
 //function or loop to check that player input is actually R, P, or S
-function playerChoice(input) {
-    input = prompt('Type Rock, Paper, or Scissors.').toLowerCase();
-        if (input.includes('rock') || input.includes('scissors') || input.includes('paper')) {;
+function playerChoice(playerSelection) {
+    playerSelection = prompt('Type Rock, Paper, or Scissors.').toLowerCase();
+        if (playerSelection.includes('rock') || playerSelection.includes('scissors') || playerSelection.includes('paper')) {;
         } else {
             alert('Please choose within the options. Thanks.');
-            input = prompt('Type Rock, Paper, or Scissors.').toLowerCase();
+            playerSelection = prompt('Type Rock, Paper, or Scissors.').toLowerCase();
         }
-        console.log(input);
-        return input;    
+        console.log(playerSelection);
+        return playerSelection;    
 }
 
 //variable to store computer's options
 const options = ['rock', 'paper', 'scissors'];
 
-//variable to store computer's selection
-let computerSelection = computerPlay();
-
 //function that randomly generates the computer's selection
-function computerPlay(option) {
-    option = options[Math.floor(Math.random() * options.length)];
-    console.log(option);
-    return option;
+function computerPlay(computerSelection) {
+    computerSelection = options[Math.floor(Math.random() * options.length)];
+    console.log(computerSelection);
+    return computerSelection;
 }
 
 //variables to store computerScore, playerScore
