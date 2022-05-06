@@ -1,8 +1,17 @@
 //variable to store player's selection
-let playerSelection = prompt('Type Rock, Paper, or Scissors.').toLowerCase();
-console.log(playerSelection);
+let playerSelection = playerChoice();
 
 //function or loop to check that player input is actually R, P, or S
+function playerChoice(input) {
+    input = prompt('Type Rock, Paper, or Scissors.').toLowerCase();
+        if (input.includes('rock') || input.includes('scissors') || input.includes('paper')) {;
+        } else {
+            alert('Please choose within the options. Thanks.');
+            input = prompt('Type Rock, Paper, or Scissors.').toLowerCase();
+        }
+        console.log(input);
+        return input;    
+}
 
 //variable to store computer's options
 const options = ['rock', 'paper', 'scissors'];
@@ -70,10 +79,8 @@ function game() {
     for (let i = 0; i < 5; i++) {
         if (i < 5) {
             console.log('Starting game number ' + (i) + '') ;
-            console.log(playRound(playerSelection, computerPlay()));
+            console.log(playRound(playerChoice(), computerPlay()));
             console.log('Computer has ' + computerScore + ' points. And player has ' + playerScore + ' points.');
-            playerSelection = prompt('Type Rock, Paper, or Scissors.').toLowerCase();
-            console.log(playerSelection);
         }    
 }}
 
