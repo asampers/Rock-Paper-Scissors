@@ -9,8 +9,6 @@ const options = ['rock', 'paper', 'scissors'];
 //variable to store computer's selection
 let computerSelection = computerPlay();
 
-
-
 //function that randomly generates the computer's selection
 function computerPlay(option) {
     option = options[Math.floor(Math.random() * options.length)];
@@ -25,26 +23,44 @@ let playerScore = 0;
 const computerWin = 'Sorry, you\'ve lost. Play again if you\'re not too embarrassed.'
 const playerWin = 'Congratulations! You\'ve won!';
 
+//function to figure out who wins?
+    //if computerscore == 2 && playerscore == 3 {
+   //     return playerWin;
+ //   } else if computerscore == 3 && playerscore == 2 {
+  //      return computerWin;
+ //}
+
 //function that plays a single round of RPS, using playerSelection
 //and computerSelection, returning a string that declares the winner
 function playRound(playerSelection, computerSelection) {
     if (playerSelection == 'scissors' && computerSelection == 'paper') {
-        return 'You Win! Scissors beats Rock.';
+         playerScore++;
+         return 'You Win! Scissors beats Rock.'; 
     } else if (playerSelection == 'rock' && computerSelection == 'scissors') {
-        return 'You Win! Rock beats Scissors.';
+         playerScore++;
+         return 'You Win! Rock beats Scissors.';
     } else if (playerSelection == 'paper' && computerSelection == 'rock') {
+         playerScore++; 
          return 'You Win! Paper beats Rock.';
     } else if (playerSelection == 'rock' && computerSelection == 'paper') {
+         computerScore++;
          return 'You Lose. Paper beats Rock.';
     } else if (playerSelection == 'scissors' && computerSelection == 'rock') {
+         computerScore++;
          return 'You Lose. Rock beats Scissors.';
     } else if (playerSelection == 'paper' && computerSelection == 'scissors') {
+         computerScore++;
          return 'You Lose. Scissors beats Paper.';
      } else if (playerSelection == computerSelection) {
-        return 'It\'s a tie.';
+         computerScore++;
+         playerScore++;   
+         return 'It\'s a tie.';
     } 
+
 } 
   
+
+
 //function that generates 5 playRounds, keeping score, and reports 
 //a winner/loser at the end 
 function game() {
