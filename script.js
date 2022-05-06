@@ -1,12 +1,12 @@
 //variable to store computer's selection
-const computerSelection = computerPlay();
+let computerSelection = computerPlay();
 
 //variable to store player's selection
 let playerSelection = prompt('Type Rock, Paper, or Scissors.').toLowerCase();
 
 //variable to store You Lose, You Win, It's a Tie(?)
-const youLose = 'You Lose! ' + computerSelection + ' beats ' + (playerSelection) + '.';
-const youWin = 'You Win! ' + (playerSelection) + ' beats ' + computerSelection + '.';
+let youLose = 'You Lose! ' + (computerSelection) + ' beats ' + (playerSelection) + '.';
+let youWin = 'You Win! ' + (playerSelection) + ' beats ' + (computerSelection) + '.';
 
 //function or loop to check that player input is actually R, P, or S
 
@@ -22,11 +22,14 @@ function computerPlay(option) {
 function game() {
     for (let i = 0; i < 5; i++) {
         if (i < 5) {
-            playRound(playerSelection, computerSelection);
+            console.log('Starting game number ' + (i) + '') ;
+            playRound(playerSelection, computerPlay);
             console.log(playRound(playerSelection, computerSelection)); 
-            computerSelection;
+            playerSelection = prompt('Type Rock, Paper, or Scissors.').toLowerCase();
+            console.log(playerSelection);
             console.log(computerSelection);
-            playerSelection = prompt('Type Rock, Paper, or Scissors.').toLowerCase();;   
+            youLose = 'You Lose! ' + (computerSelection) + ' beats ' + (playerSelection) + '.';
+            youWin = 'You Win! ' + (playerSelection) + ' beats ' + (computerSelection) + '.';  
         } else console.log('You\'ve played 5 times.');      
 }}
 //function that plays a single round of RPS, using playerSelection
@@ -47,6 +50,7 @@ function playRound(playerSelection, computerSelection) {
      } else if (playerSelection == computerSelection) {
         return 'It\'s a tie.';
     } 
+     
 }
 
 console.log(computerSelection);
