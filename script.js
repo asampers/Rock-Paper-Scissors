@@ -5,9 +5,9 @@ function playerChoice(playerSelection) {
         } else {
             alert('Please choose within the options. Thanks.');
             playerSelection = prompt('Type Rock, Paper, or Scissors.').toLowerCase();
-        }
+        }  
         console.log(playerSelection);
-        return playerSelection;    
+        return playerSelection;  
 }
 
 //variable to store computer's options
@@ -29,7 +29,7 @@ let playerScore = 0;
 function playRound(playerSelection, computerSelection) {
     if (playerSelection == 'scissors' && computerSelection == 'paper') {
          playerScore++;
-         return 'You Win! Scissors beats Rock.'; 
+         return 'You Win! Scissors beats Paper.'; 
     } else if (playerSelection == 'rock' && computerSelection == 'scissors') {
          playerScore++;
          return 'You Win! Rock beats Scissors.';
