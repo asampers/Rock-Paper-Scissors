@@ -1,4 +1,4 @@
-//function or loop to check that player input is actually R, P, or S
+//function to get player's selection
 function playerChoice(playerSelection) {
     playerSelection = prompt('Type Rock, Paper, or Scissors.').toLowerCase();
         if (playerSelection.includes('rock') || playerSelection.includes('scissors') || playerSelection.includes('paper')) {;
@@ -25,7 +25,7 @@ let computerScore = 0;
 let playerScore = 0;
 
 //function that plays a single round of RPS, using playerSelection
-//and computerSelection, returning a string that declares the winner
+//and computerSelection, returning a string that declares the winner, also add point
 function playRound(playerSelection, computerSelection) {
     if (playerSelection == 'scissors' && computerSelection == 'paper') {
          playerScore++;
@@ -52,14 +52,17 @@ function playRound(playerSelection, computerSelection) {
     } 
 } 
 
-//function to figure out who wins
+//function to figure out who wins, and ask if you want to play again
 function gameWin(computerScore, playerScore) {
     if (computerScore < playerScore)  {
         console.log(playerWin);
+        playAgain();
    } else if (computerScore > playerScore)  {
-        console.log(computerWin) ;
+        console.log(computerWin);
+        playAgain();
    } else if (computerScore == playerScore) {
        console.log(tiedGame);
+       playAgain();
    }   
 }
 //variables to store game outcome
@@ -67,8 +70,20 @@ const computerWin = 'Sorry, you\'ve lost. Play again if you\'re not too embarras
 const playerWin = 'Congratulations! You\'ve won!';
 const tiedGame = 'It\'s a tied game. There are no winners or losers.';
 
-//function that generates 5 playRounds, keeping score, and reports 
-//a winner/loser at the end 
+//function to ask if player wants to play again and if 'yes' clear score
+function playAgain(yesNo) {
+    yesNo = confirm('Would you like to play again? If yes, hit \"OK\".');
+        if (yesNo == true) {
+            computerScore = 0;
+            playerScore = 0;
+            game();
+            gameWin(computerScore, playerScore);
+        } else {
+            alert('Okay, thank\'s for playing!');
+        }
+}
+
+//function that generates 5 playRounds, logs current score
 function game() {
     for (let i = 0; i < 5; i++) {
         if (i < 5) {
