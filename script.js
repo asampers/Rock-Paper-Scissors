@@ -102,7 +102,7 @@ const wouldYou = document.createElement('p');
   
 
 //function to ask if player wants to play again and if 'yes' clear score
-function playAgain() {
+function playAgain(e) {
     wouldYou.textContent = 'Would you like to play again?';  
     resultsDisplay.appendChild(wouldYou);
     resultsDisplay.appendChild(yes);
@@ -118,16 +118,10 @@ function playAgain() {
             yes.parentNode.removeChild(yes);
             no.parentNode.removeChild(no);
     });  
-    no.addEventListener('click', function(e) {
+    no.addEventListener('click', function() {
         computerScore = 0;
         playerScore = 0;
-        selections.textContent = '';
-        gameOutcome.textContent = '';
-        scoreTally.textContent = '';
-        pointCounter.textContent = '';
-        wouldYou.textContent = '';
-        yes.parentNode.removeChild(yes);
-        no.parentNode.removeChild(no);
+        resultsDisplay.textContent = '';
         alert('Okay, thank\'s for playing!');
     })
     e.stopPropagation();
