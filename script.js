@@ -1,5 +1,10 @@
-let playerSelection = '';
+const resultsDisplay = document.querySelector('#resultsDisplay');
+resultsDisplay.style.cssText = 'color: black; background: grey;';
+const gameOutcome = document.createElement('p');
+const scoreTally = document.createElement('p');
 
+let playerSelection = '';
+const gameDisplay = document.querySelector('div');
 const buttons = document.querySelectorAll('button');
 
 buttons.forEach((button) => {
@@ -7,9 +12,12 @@ buttons.forEach((button) => {
         playerSelection = e.target.textContent.toLowerCase();
         console.log(playerSelection);
         computerPlay();
-        console.log(playRound(playerSelection, computerSelection));
-        console.log('Computer has ' + computerScore + ' points. And player has ' + playerScore + ' points.');});
+        gameOutcome.textContent = (playRound(playerSelection, computerSelection));
+        scoreTally.textContent = 'Computer has ' + computerScore + ' points. Player has ' + playerScore + ' points.';});
 });
+
+resultsDisplay.appendChild(gameOutcome);
+resultsDisplay.appendChild(scoreTally);
 
 //variable to store computer's options
 const options = ['rock', 'paper', 'scissors'];
