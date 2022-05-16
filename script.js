@@ -72,12 +72,15 @@ function gameWin(computerScore, playerScore) {
         if (computerScore < playerScore)  {
             pointCounter.textContent = playerWin;    
             resultsDisplay.appendChild(pointCounter);
+            playAgain();
         } else if (computerScore > playerScore)  {
             pointCounter.textContent = computerWin;    
             resultsDisplay.appendChild(pointCounter);
+            playAgain();
         } else if (computerScore == playerScore) {
             pointCounter.textContent = tiedGame;
             resultsDisplay.appendChild(pointCounter);}
+            playAgain();
     } else if (computerScore === 4 || playerScore === 4) { 
         pointCounter.textContent = 'So close to 5 points! Choose wisely!';
         resultsDisplay.appendChild(pointCounter);
@@ -90,26 +93,43 @@ const computerWin = 'Sorry, you\'ve lost the game. The computer got 5 points fir
 const playerWin = 'Congratulations! You\'ve won the game! You got to 5 points first.';
 const tiedGame = 'It\'s a tied game. There are no winners or losers.';
 
+//variables to store buttons and question for playAgain
+const yes = document.createElement('button');
+yes.textContent = 'Yes';
+const no = document.createElement('button');
+no.textContent = 'No';
+const wouldYou = document.createElement('p');
+  
+
 //function to ask if player wants to play again and if 'yes' clear score
-function playAgain(yesNo) {
-    yesNo = confirm('Would you like to play again? If yes, hit \"OK\".');
-        if (yesNo == true) {
+function playAgain() {
+    wouldYou.textContent = 'Would you like to play again?';  
+    resultsDisplay.appendChild(wouldYou);
+    resultsDisplay.appendChild(yes);
+    resultsDisplay.appendChild(no);
+    yes.addEventListener('click', function() {
             computerScore = 0;
             playerScore = 0;
-        } else {
-            alert('Okay, thank\'s for playing!');
-        }
+            selections.textContent = 'Alright! Make your first selection.';
+            gameOutcome.textContent = '';
+            scoreTally.textContent = '';
+            pointCounter.textContent = '';
+            wouldYou.textContent = '';
+            yes.parentNode.removeChild(yes);
+            no.parentNode.removeChild(no);
+    });  
+    no.addEventListener('click', function(e) {
+        computerScore = 0;
+        playerScore = 0;
+        selections.textContent = '';
+        gameOutcome.textContent = '';
+        scoreTally.textContent = '';
+        pointCounter.textContent = '';
+        wouldYou.textContent = '';
+        yes.parentNode.removeChild(yes);
+        no.parentNode.removeChild(no);
+        alert('Okay, thank\'s for playing!');
+    })
+    e.stopPropagation();
 }
-
-//function that generates 5 playRounds, logs current score
-//function game() {
- //   for (let i = 0; i < 5; i++) {
- //       if (i < 5) {
- //           console.log('Starting game number ' + (i) + '') ;
- //           console.log(playRound(playerChoice(), computerPlay()));
- //           console.log('Computer has ' + computerScore + ' points. And player has ' + playerScore + ' points.');
- //       }    
-//}}
-
-//game();
 
