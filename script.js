@@ -1,20 +1,22 @@
-//function to get player's selection
-function playerChoice(playerSelection) {
-    playerSelection = prompt('Type Rock, Paper, or Scissors.').toLowerCase();
-        if (playerSelection.includes('rock') || playerSelection.includes('scissors') || playerSelection.includes('paper')) {;
-        } else {
-            alert('Please choose within the options. Thanks.');
-            playerSelection = prompt('Type Rock, Paper, or Scissors.').toLowerCase();
-        }  
+let playerSelection = '';
+
+const buttons = document.querySelectorAll('button');
+
+buttons.forEach((button) => {
+    button.addEventListener('click', function(e) {
+        playerSelection = e.target.textContent.toLowerCase();
         console.log(playerSelection);
-        return playerSelection;  
-}
+        computerPlay();
+        console.log(playRound(playerSelection, computerSelection));
+        console.log('Computer has ' + computerScore + ' points. And player has ' + playerScore + ' points.');});
+});
 
 //variable to store computer's options
 const options = ['rock', 'paper', 'scissors'];
+let computerSelection = '';
 
 //function that randomly generates the computer's selection
-function computerPlay(computerSelection) {
+function computerPlay() {
     computerSelection = options[Math.floor(Math.random() * options.length)];
     console.log(computerSelection);
     return computerSelection;
@@ -84,14 +86,14 @@ function playAgain(yesNo) {
 }
 
 //function that generates 5 playRounds, logs current score
-function game() {
-    for (let i = 0; i < 5; i++) {
-        if (i < 5) {
-            console.log('Starting game number ' + (i) + '') ;
-            console.log(playRound(playerChoice(), computerPlay()));
-            console.log('Computer has ' + computerScore + ' points. And player has ' + playerScore + ' points.');
-        }    
-}}
+//function game() {
+ //   for (let i = 0; i < 5; i++) {
+ //       if (i < 5) {
+ //           console.log('Starting game number ' + (i) + '') ;
+ //           console.log(playRound(playerChoice(), computerPlay()));
+ //           console.log('Computer has ' + computerScore + ' points. And player has ' + playerScore + ' points.');
+ //       }    
+//}}
 
-game();
-gameWin(computerScore, playerScore);
+//game();
+//gameWin(computerScore, playerScore);
