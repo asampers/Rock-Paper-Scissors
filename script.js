@@ -1,3 +1,4 @@
+const selections =  document.querySelector('#selections');
 const resultsDisplay = document.querySelector('#resultsDisplay');
 resultsDisplay.style.cssText = 'color: black; background: grey;';
 const gameOutcome = document.createElement('p');
@@ -12,10 +13,12 @@ buttons.forEach((button) => {
         playerSelection = e.target.textContent.toLowerCase();
         console.log(playerSelection);
         computerPlay();
+        selections.textContent = 'Player selected ' + playerSelection + '. Computer selected ' + computerSelection + '.';
         gameOutcome.textContent = (playRound(playerSelection, computerSelection));
         scoreTally.textContent = 'Computer has ' + computerScore + ' points. Player has ' + playerScore + ' points.';});
 });
 
+resultsDisplay.appendChild(selections);
 resultsDisplay.appendChild(gameOutcome);
 resultsDisplay.appendChild(scoreTally);
 
