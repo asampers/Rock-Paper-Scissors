@@ -1,8 +1,10 @@
-const selections =  document.querySelector('#selections');
 const resultsDisplay = document.querySelector('#resultsDisplay');
-resultsDisplay.style.cssText = 'color: black; background: grey;';
+resultsDisplay.style.cssText = 'color: black; background: lightPink;';
+
+const selections =  document.querySelector('#selections');
 const gameOutcome = document.createElement('p');
 const scoreTally = document.createElement('p');
+const pointCounter = document.createElement('p');
 
 let playerSelection = '';
 const gameDisplay = document.querySelector('div');
@@ -15,7 +17,8 @@ buttons.forEach((button) => {
         computerPlay();
         selections.textContent = 'Player selected ' + playerSelection + '. Computer selected ' + computerSelection + '.';
         gameOutcome.textContent = (playRound(playerSelection, computerSelection));
-        scoreTally.textContent = 'Computer has ' + computerScore + ' points. Player has ' + playerScore + ' points.';});
+        scoreTally.textContent = 'Computer has ' + computerScore + ' points. Player has ' + playerScore + ' points.';
+        gameWin(computerScore, playerScore);});
 });
 
 resultsDisplay.appendChild(selections);
@@ -42,45 +45,49 @@ let playerScore = 0;
 function playRound(playerSelection, computerSelection) {
     if (playerSelection == 'scissors' && computerSelection == 'paper') {
          playerScore++;
-         return 'You Win! Scissors beats Paper.'; 
+         return 'You Win this round! Scissors beats Paper.'; 
     } else if (playerSelection == 'rock' && computerSelection == 'scissors') {
          playerScore++;
-         return 'You Win! Rock beats Scissors.';
+         return 'You Win this round! Rock beats Scissors.';
     } else if (playerSelection == 'paper' && computerSelection == 'rock') {
          playerScore++; 
-         return 'You Win! Paper beats Rock.';
+         return 'You Win this round! Paper beats Rock.';
     } else if (playerSelection == 'rock' && computerSelection == 'paper') {
          computerScore++;
-         return 'You Lose. Paper beats Rock.';
+         return 'You Lose this round. Paper beats Rock.';
     } else if (playerSelection == 'scissors' && computerSelection == 'rock') {
          computerScore++;
-         return 'You Lose. Rock beats Scissors.';
+         return 'You Lose this round. Rock beats Scissors.';
     } else if (playerSelection == 'paper' && computerSelection == 'scissors') {
          computerScore++;
-         return 'You Lose. Scissors beats Paper.';
+         return 'You Lose this round. Scissors beats Paper.';
      } else if (playerSelection == computerSelection) {
-         computerScore++;
-         playerScore++;   
-         return 'It\'s a tie.';
+           return 'It\'s a tie.';
     } 
 } 
 
-//function to figure out who wins, and ask if you want to play again
+//function to figure out who wins
 function gameWin(computerScore, playerScore) {
-    if (computerScore < playerScore)  {
-        console.log(playerWin);
-        playAgain();
-   } else if (computerScore > playerScore)  {
-        console.log(computerWin);
-        playAgain();
-   } else if (computerScore == playerScore) {
-       console.log(tiedGame);
-       playAgain();
-   }   
+    if (computerScore >= 5 || playerScore >= 5) {
+        if (computerScore < playerScore)  {
+            pointCounter.textContent = playerWin;    
+            resultsDisplay.appendChild(pointCounter);
+        } else if (computerScore > playerScore)  {
+            pointCounter.textContent = computerWin;    
+            resultsDisplay.appendChild(pointCounter);
+        } else if (computerScore == playerScore) {
+            pointCounter.textContent = tiedGame;
+            resultsDisplay.appendChild(pointCounter);}
+    } else if (computerScore === 4 || playerScore === 4) { 
+        pointCounter.textContent = 'So close to 5 points! Choose wisely!';
+        resultsDisplay.appendChild(pointCounter);
+    } else if (computerScore <= 3 && playerScore <= 3) {
+        pointCounter.textContent = 'First to 5 points wins!';
+        resultsDisplay.appendChild(pointCounter);};   
 }
 //variables to store game outcome
-const computerWin = 'Sorry, you\'ve lost. Play again if you\'re not too embarrassed.'
-const playerWin = 'Congratulations! You\'ve won!';
+const computerWin = 'Sorry, you\'ve lost the game. The computer got 5 points first. Play again if you\'re not too embarrassed.'
+const playerWin = 'Congratulations! You\'ve won the game! You got to 5 points first.';
 const tiedGame = 'It\'s a tied game. There are no winners or losers.';
 
 //function to ask if player wants to play again and if 'yes' clear score
@@ -89,8 +96,6 @@ function playAgain(yesNo) {
         if (yesNo == true) {
             computerScore = 0;
             playerScore = 0;
-            game();
-            gameWin(computerScore, playerScore);
         } else {
             alert('Okay, thank\'s for playing!');
         }
@@ -107,4 +112,4 @@ function playAgain(yesNo) {
 //}}
 
 //game();
-//gameWin(computerScore, playerScore);
+
