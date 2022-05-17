@@ -7,15 +7,15 @@ body {
 
 .header {
     display: flex;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
     align-content: center;
-    justify-content: center;
+    text-align: center;
     margin: auto;
 }
 
 .btnContainer {
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     justify-content: center;
     align-content: center;
     gap: 50px;
@@ -35,4 +35,30 @@ body {
     justify-content: center;
     align-items: center;
     gap: 15px;
+}
+
+.scoreTally {
+    font-weight: 700;
+}
+
+.pointCounter {
+    font-style: italic;
+    text-align: center;
+}
+
+.selections {
+    text-align: center;
+}
+
+button {
+    border-radius: 7%;
+    border-style: solid;
+    border-color: black;
+    background-color: white;
+}
+
+img {
+    max-width: 150px;
+    height: auto;
+    border-radius: 7%;
 }
