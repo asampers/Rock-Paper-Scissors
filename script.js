@@ -94,36 +94,25 @@ const playerWin = 'Congratulations! You\'ve won the game! You got to 5 points fi
 const tiedGame = 'It\'s a tied game. There are no winners or losers.';
 
 //variables to store buttons and question for playAgain
-const yes = document.createElement('button');
-yes.textContent = 'Yes';
-const no = document.createElement('button');
-no.textContent = 'No';
+const restart = document.createElement('button');
+restart.textContent = 'Restart';
 const wouldYou = document.createElement('p');
   
 
 //function to ask if player wants to play again and if 'yes' clear score
 function playAgain(e) {
-    wouldYou.textContent = 'Would you like to play again?';  
+    wouldYou.textContent = 'Let\'s play again!';  
     resultsDisplay.appendChild(wouldYou);
-    resultsDisplay.appendChild(yes);
-    resultsDisplay.appendChild(no);
-    yes.addEventListener('click', function() {
+    resultsDisplay.appendChild(restart);
+    restart.addEventListener('click', function() {
             computerScore = 0;
             playerScore = 0;
-            selections.textContent = 'Alright! Make your first selection.';
+            selections.textContent = 'Make your first selection.';
             gameOutcome.textContent = '';
             scoreTally.textContent = '';
             pointCounter.textContent = '';
             wouldYou.textContent = '';
-            yes.parentNode.removeChild(yes);
-            no.parentNode.removeChild(no);
+            restart.parentNode.removeChild(restart);
     });  
-    no.addEventListener('click', function() {
-        computerScore = 0;
-        playerScore = 0;
-        resultsDisplay.textContent = '';
-        alert('Okay, thank\'s for playing!');
-    })
-    e.stopPropagation();
 }
 
