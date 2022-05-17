@@ -1,10 +1,10 @@
-const resultsDisplay = document.querySelector('#resultsDisplay');
+const resultsDisplay = document.querySelector('.resultsDisplay');
 resultsDisplay.style.cssText = 'color: black; background: lightPink;';
 
-const selections =  document.querySelector('#selections');
-const gameOutcome = document.createElement('p');
-const scoreTally = document.createElement('p');
-const pointCounter = document.createElement('p');
+const selections =  resultsDisplay.querySelector('.selections');
+const gameOutcome = resultsDisplay.querySelector('.gameOutcome');
+const scoreTally = resultsDisplay.querySelector('.scoreTally');
+const pointCounter = resultsDisplay.querySelector('.pointCounter');
 
 let playerSelection = '';
 const gameDisplay = document.querySelector('div');
@@ -12,7 +12,7 @@ const buttons = document.querySelectorAll('button');
 
 buttons.forEach((button) => {
     button.addEventListener('click', function(e) {
-        playerSelection = e.target.textContent.toLowerCase();
+        playerSelection = e.currentTarget.value.toLowerCase();
         console.log(playerSelection);
         computerPlay();
         selections.textContent = 'Player selected ' + playerSelection + '. Computer selected ' + computerSelection + '.';
