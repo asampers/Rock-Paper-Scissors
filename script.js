@@ -1,5 +1,5 @@
 const resultsDisplay = document.querySelector('.resultsDisplay');
-resultsDisplay.style.cssText = 'color: black; background: lightPink;';
+
 
 const selections =  resultsDisplay.querySelector('.selections');
 const gameOutcome = resultsDisplay.querySelector('.gameOutcome');
@@ -96,6 +96,9 @@ const tiedGame = 'It\'s a tied game. There are no winners or losers.';
 //variables to store buttons and question for playAgain
 const restart = document.createElement('button');
 restart.textContent = 'Restart';
+restart.style.padding = '10px';
+restart.style.background = 'yellow';
+restart.style.fontFamily = 'courier-new';
 const wouldYou = document.createElement('p');
   
 
