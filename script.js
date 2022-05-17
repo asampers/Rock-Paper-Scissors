@@ -1,6 +1,4 @@
 const resultsDisplay = document.querySelector('.resultsDisplay');
-
-
 const selections =  resultsDisplay.querySelector('.selections');
 const gameOutcome = resultsDisplay.querySelector('.gameOutcome');
 const scoreTally = resultsDisplay.querySelector('.scoreTally');
@@ -45,22 +43,22 @@ let playerScore = 0;
 function playRound(playerSelection, computerSelection) {
     if (playerSelection == 'scissors' && computerSelection == 'paper') {
          playerScore++;
-         return 'You Win this round! Scissors beats Paper.'; 
+         return 'You Win this round!'; 
     } else if (playerSelection == 'rock' && computerSelection == 'scissors') {
          playerScore++;
-         return 'You Win this round! Rock beats Scissors.';
+         return 'You Win this round!';
     } else if (playerSelection == 'paper' && computerSelection == 'rock') {
          playerScore++; 
-         return 'You Win this round! Paper beats Rock.';
+         return 'You Win this round!';
     } else if (playerSelection == 'rock' && computerSelection == 'paper') {
          computerScore++;
-         return 'You Lose this round. Paper beats Rock.';
+         return 'You Lose this round.';
     } else if (playerSelection == 'scissors' && computerSelection == 'rock') {
          computerScore++;
-         return 'You Lose this round. Rock beats Scissors.';
+         return 'You Lose this round.';
     } else if (playerSelection == 'paper' && computerSelection == 'scissors') {
          computerScore++;
-         return 'You Lose this round. Scissors beats Paper.';
+         return 'You Lose this round.';
      } else if (playerSelection == computerSelection) {
            return 'It\'s a tie.';
     } 
@@ -89,16 +87,14 @@ function gameWin(computerScore, playerScore) {
         resultsDisplay.appendChild(pointCounter);};   
 }
 //variables to store game outcome
-const computerWin = 'Sorry, you\'ve lost the game. The computer got 5 points first. Play again if you\'re not too embarrassed.'
+const computerWin = 'Sorry, you\'ve lost the game. The computer got 5 points first.'
 const playerWin = 'Congratulations! You\'ve won the game! You got to 5 points first.';
 const tiedGame = 'It\'s a tied game. There are no winners or losers.';
 
 //variables to store buttons and question for playAgain
 const restart = document.createElement('button');
 restart.textContent = 'Restart';
-restart.style.padding = '10px';
-restart.style.background = 'yellow';
-restart.style.fontFamily = 'courier-new';
+restart.style.cssText = 'font-size: 15px; font-family: courier new; background: yellow; font-weight: bold; padding: 10px';
 const wouldYou = document.createElement('p');
   
 
